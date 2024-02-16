@@ -6,44 +6,52 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 14:21:20 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/16 15:02:07 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/16 17:37:33 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "phonebook.hpp"
+#include "PhoneBook.hpp"
+
+static void	print_phonebook(PhoneBook *phonebook, Print *print)
+{
+	Contact	tmp;
+
+	print->draw_terminal_line();
+	std::cout << DISPLAY << std::endl;
+	for (int index = 0; index < MAX_CONTACT; index++){
+		tmp = phonebook->getContact(index);
+		std::cout << tmp.info.family_name << std::endl;
+		std::cout << tmp.info.first_name << std::endl;
+		std::cout << tmp.info.nickname << std::endl;
+		std::cout << tmp.info.phonenumber << std::endl;
+		std::cout << tmp.info.dark_secret << std::endl;
+	}
+	print->draw_terminal_line();
+	return ;
+}
 
 int	main(void)
 {
 	PhoneBook	phonebook;
 	Contact		contact;
-	Contact		tmp;
 	std::string	readcommand;
+	Print		print;
 
+	print.get_term_line();
 	while (true)
 	{
 		std::cin >> readcommand;
 		if (readcommand == ADD){
-			std::cout << "add" << std::endl;
-			std::cin >> contact.info.family_name;
-			std::cin >> contact.info.first_name;
-			std::cin >> contact.info.nickname;
-			std::cin >> contact.info.phonenumber;
-			std::cin >> contact.info.dark_secret;
+			print.draw_terminal_line();
+			contact.inputContactInfo(contact.info);
+			print.draw_terminal_line();
 			phonebook.addContact(contact);
 		}
 		else if (readcommand == SEARCH){
-			std::cout << "search" << std::endl;
-			tmp = phonebook.getContact(0);
-			std::cout << tmp.info.family_name;
-			std::cout << tmp.info.first_name;
-			std::cout << tmp.info.nickname;
-			std::cout << tmp.info.phonenumber;
-			std::cout << tmp.info.dark_secret;
+			print_phonebook(&phonebook, &print);
 		}
-		else if (readcommand == EXIT){
-			std::cout << "exit" << std::endl;
+		else if (readcommand == EXIT)
 			break ;
-		}
 	}
 	return (EXIT_SUCCESS);
 }

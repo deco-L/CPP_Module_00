@@ -6,14 +6,17 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 14:21:20 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/16 15:00:36 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/16 17:41:32 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#ifndef PHONEBOOK_H
+# define PHONEBOOK_H
 
-#include "structure.hpp"
-#include "Contact.hpp"
+# include "structure.hpp"
+# include "Contact.hpp"
+# include "Print.hpp"
+# include <cstdlib>
 
 class	PhoneBook: Contact{
 	private:
@@ -25,6 +28,8 @@ class	PhoneBook: Contact{
 		PhoneBook(){}
 
 		bool	addContact(const Contact &contact){
+			if (count == 8)
+				count = 0;
 			contacts[count] = contact;
 			count++;
 			return true;
@@ -36,3 +41,5 @@ class	PhoneBook: Contact{
 			return emptycontact;
 		}
 };
+
+#endif

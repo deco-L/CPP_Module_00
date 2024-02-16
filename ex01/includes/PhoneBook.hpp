@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 14:21:20 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/16 17:41:32 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/17 01:59:46 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,20 @@
 # include "Contact.hpp"
 # include "Print.hpp"
 # include <cstdlib>
+# include <limits>
+# include <sstream>
 
-class	PhoneBook: Contact{
+class	PhoneBook : Contact{
 	private:
 		int				count;
 		Contact			emptycontact;
 		Contact 		contacts[MAX_CONTACT];
 
 	public:
-		PhoneBook(){}
+		PhoneBook() :
+		count(0),
+		emptycontact(),
+		contacts() {}
 
 		bool	addContact(const Contact &contact){
 			if (count == 8)
@@ -39,6 +44,12 @@ class	PhoneBook: Contact{
 			if (0 <= index && index <= MAX_CONTACT)
 				return contacts[index];
 			return emptycontact;
+		}
+
+		const std::string	getindex(int index){
+			std::stringstream	sstream;
+			sstream << index;
+			return (sstream.str());
 		}
 };
 

@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 14:21:20 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/16 17:23:40 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/17 00:56:31 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,14 @@ class	Contact{
 	public:
 		ContactInfo info;
 
+		Contact() : info() {}
+
 		void	inputContactInfo(ContactInfo &input){
 			std::cout << REGISTER << std::endl;
-			std::cout << LAST_NAME << std::endl;
-			std::cin >> input.family_name;
 			std::cout << FIRST_NAME << std::endl;
 			std::cin >> input.first_name;
+			std::cout << LAST_NAME << std::endl;
+			std::cin >> input.last_name;
 			std::cout << NICKNAME << std::endl;
 			std::cin >> input.nickname;
 			std::cout << PHONENUMBER << std::endl;

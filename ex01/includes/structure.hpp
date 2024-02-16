@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 14:21:20 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/16 17:31:08 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/17 01:41:24 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,14 @@
 # include <iostream>
 
 # define MAX_CONTACT	8
+# define COL_LEN		10
 # define ADD			"ADD"
 # define SEARCH			"SEARCH"
 # define EXIT			"EXIT"
 # define REGISTER		"Register your contact information"
-# define LAST_NAME		"Please enter your last name"
+# define INDEX			"Please enter the index of contacts you would like to display"
 # define FIRST_NAME		"Please enter your first name"
+# define LAST_NAME		"Please enter your last name"
 # define NICKNAME		"Please enter your nickname"
 # define PHONENUMBER	"Please enter your phone number"
 # define SECRET			"Please enter your darkest secret"
@@ -30,11 +32,18 @@
 # define DISPLAY		"Displays registered contacts"
 
 struct ContactInfo{
-	std::string	family_name;
 	std::string	first_name;
+	std::string	last_name;
 	std::string	nickname;
 	std::string	phonenumber;
 	std::string	dark_secret;
+
+	ContactInfo() :
+	first_name(""),
+	last_name(""),
+	nickname(""),
+	phonenumber(""),
+	dark_secret("") {}
 };
 
 #endif

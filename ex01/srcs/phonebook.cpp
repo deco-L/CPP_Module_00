@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 14:21:20 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/16 17:37:33 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/17 01:56:00 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,24 @@
 
 static void	print_phonebook(PhoneBook *phonebook, Print *print)
 {
+	int		index;
 	Contact	tmp;
 
 	print->draw_terminal_line();
-	std::cout << DISPLAY << std::endl;
-	for (int index = 0; index < MAX_CONTACT; index++){
-		tmp = phonebook->getContact(index);
-		std::cout << tmp.info.family_name << std::endl;
-		std::cout << tmp.info.first_name << std::endl;
-		std::cout << tmp.info.nickname << std::endl;
-		std::cout << tmp.info.phonenumber << std::endl;
-		std::cout << tmp.info.dark_secret << std::endl;
+	std::cout << INDEX << std::endl;
+	std::cin >> index;
+	if (std::cin.fail() || index < 1 || index > 8){
+		std::cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		print->draw_terminal_line();
+		return ;
 	}
+	std::cout << DISPLAY << std::endl;
+	tmp = phonebook->getContact(index - 1);
+	print->print_row(phonebook->getindex(index), false);
+	print->print_row(tmp.info.first_name, false);
+	print->print_row(tmp.info.last_name, false);
+	print->print_row(tmp.info.nickname, true);
 	print->draw_terminal_line();
 	return ;
 }

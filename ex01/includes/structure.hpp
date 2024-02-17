@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 14:21:20 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/17 01:41:24 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/17 14:03:51 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # define EXIT			"EXIT"
 # define REGISTER		"Register your contact information"
 # define INDEX			"Please enter the index of contacts you would like to display"
+# define INDEX_ERR		"Please enter an index from one to eight"
 # define FIRST_NAME		"Please enter your first name"
 # define LAST_NAME		"Please enter your last name"
 # define NICKNAME		"Please enter your nickname"

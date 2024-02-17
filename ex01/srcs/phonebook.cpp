@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 14:21:20 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/17 01:56:00 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/17 14:04:20 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static void	print_phonebook(PhoneBook *phonebook, Print *print)
 	if (std::cin.fail() || index < 1 || index > 8){
 		std::cin.clear();
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		std::cout << INDEX_ERR << std::endl;
 		print->draw_terminal_line();
 		return ;
 	}

@@ -6,7 +6,7 @@
 #    By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/01 14:21:20 by csakamot          #+#    #+#              #
-#    Updated: 2024/02/17 14:11:35 by csakamot         ###   ########.fr        #
+#    Updated: 2024/02/19 15:48:33 by csakamot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ all:			${NAME}
 
 ${NAME}:${OBJS}
 				@echo "object file				compiled"
-				@$(CC) $(CFLAGS) $< -o $@
+				@$(CC) $(CFLAGS) -o $@ $^
 
 $(OBJDIR)%.o:$(SRCDIR)%.cpp
 				@mkdir -p $(OBJDIR)

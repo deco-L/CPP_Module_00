@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 14:21:20 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/19 21:23:21 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/21 18:31:21 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ public:
 	emptycontact(),
 	contacts() {}
 
-	bool	addContact(const Contact &contact);
-	const Contact	&getContact(int index);
-	const std::string	getindex(int index) const;
+	bool	addContact( const Contact &contact );
+	const Contact	&getContact( int index );
+	const std::string	getindex( int index ) const;
 };
 
 #endif

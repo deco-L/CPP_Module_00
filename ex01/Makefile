@@ -6,7 +6,7 @@
 #    By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/01 14:21:20 by csakamot          #+#    #+#              #
-#    Updated: 2024/02/15 17:50:14 by csakamot         ###   ########.fr        #
+#    Updated: 2024/02/19 21:12:40 by csakamot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,15 +15,15 @@ NAME			= phonebook
 ##-----------------------------##
 
 ##-----Directory Location------##
-SRCDIR			= srcs/
+SRCDIR			= ./
 
-INCDIR			= includes/
+INCDIR			= ./
 
 OBJDIR			= objs/
 ##-----------------------------##
 
 ##------------Srcs-------------##
-MAINSRC			= phonebook.cpp
+MAINSRC			= main.cpp Contact.cpp Print.cpp PhoneBook.cpp
 
 SRCS			= $(addprefix $(SRCDIR), ${MAINSRC})
 ##-----------------------------##
@@ -46,7 +46,7 @@ all:			${NAME}
 
 ${NAME}:${OBJS}
 				@echo "object file				compiled"
-				@$(CC) $(CFLAGS) $< -o $@
+				@$(CC) $(CFLAGS) $^ -o $@
 
 $(OBJDIR)%.o:$(SRCDIR)%.cpp
 				@mkdir -p $(OBJDIR)

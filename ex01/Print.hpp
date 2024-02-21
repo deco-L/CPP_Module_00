@@ -1,41 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contact.hpp                                        :+:      :+:    :+:   */
+/*   Print.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 14:21:20 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/19 12:57:13 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/19 21:12:03 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-#ifndef CONTACT_H
-#define CONTACT_H
+#ifndef PRINT_H
+#define PRINT_H
 
 #include "structure.hpp"
+#include <sys/ioctl.h>
+#include <unistd.h>
+#include <iostream>
+#include <cstddef>
 
-class	Contact {
+class Print{
 public:
-	ContactInfo info;
 
-	Contact() : info() {}
+	static size_t	get_term_line();
+	static void	draw_terminal_line();
+	static void	print_row(std::string str, bool flag);
 
-	void	inputContactInfo(ContactInfo &input) {
-		std::cout << REGISTER << std::endl;
-		std::cout << FIRST_NAME << std::endl;
-		std::cin >> input.first_name;
-		std::cout << LAST_NAME << std::endl;
-		std::cin >> input.last_name;
-		std::cout << NICKNAME << std::endl;
-		std::cin >> input.nickname;
-		std::cout << PHONENUMBER << std::endl;
-		std::cin >> input.phonenumber;
-		std::cout << SECRET << std::endl;
-		std::cin >> input.dark_secret;
-		std::cout << REGISTER_END << std::endl;
-	}
 };
 
 #endif

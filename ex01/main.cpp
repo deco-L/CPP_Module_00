@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.cpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 14:21:20 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/19 13:27:02 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/02/19 21:08:04 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	main(void) {
 		std::cin >> readcommand;
 		if (readcommand == ADD) {
 			Print::draw_terminal_line();
-			contact.inputContactInfo(contact.info);
+			contact.inputContactInfo();
 			Print::draw_terminal_line();
 			phonebook.addContact(contact);
 		}

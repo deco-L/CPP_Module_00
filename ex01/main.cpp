@@ -6,13 +6,13 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 14:21:20 by csakamot          #+#    #+#             */
-/*   Updated: 2024/02/19 21:08:04 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/04/29 15:47:04 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-static void	print_phonebook(PhoneBook *phonebook) {
+static bool	print_phonebook(PhoneBook *phonebook) {
 	int		index;
 	Contact	tmp;
 
@@ -22,9 +22,9 @@ static void	print_phonebook(PhoneBook *phonebook) {
 	if (std::cin.fail() || index < 1 || index > 8) {
 		std::cin.clear();
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		std::cout << INDEX_ERR << std::endl;
+		std::cout << ERROR << std::endl;
 		Print::draw_terminal_line();
-		return ;
+		return (false);
 	}
 	std::cout << DISPLAY << std::endl;
 	tmp = phonebook->getContact(index - 1);
@@ -33,7 +33,7 @@ static void	print_phonebook(PhoneBook *phonebook) {
 	Print::print_row(tmp.info.last_name, false);
 	Print::print_row(tmp.info.nickname, true);
 	Print::draw_terminal_line();
-	return ;
+	return (true);
 }
 
 int	main(void) {
@@ -45,12 +45,19 @@ int	main(void) {
 		std::cin >> readcommand;
 		if (readcommand == ADD) {
 			Print::draw_terminal_line();
-			contact.inputContactInfo();
+			if (!contact.inputContactInfo()) {
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cout << ERROR << std::endl;
+        Print::draw_terminal_line();
+        return (EXIT_FAILURE);
+      }
 			Print::draw_terminal_line();
 			phonebook.addContact(contact);
 		}
 		else if (readcommand == SEARCH) {
-			print_phonebook(&phonebook);
+			if (!print_phonebook(&phonebook))
+        return (EXIT_FAILURE);
 		}
 		else if (readcommand == EXIT)
 			break ;

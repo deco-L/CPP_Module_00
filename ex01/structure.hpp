@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 14:21:20 by csakamot          #+#    #+#             */
-/*   Updated: 2024/04/29 15:01:30 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/04/29 17:34:18 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,16 @@
 
 #define MAX_CONTACT	8
 #define COL_LEN		10
+#define MANUAL        "Enter ADD or SEARCH or EXIT."
 #define ADD			      "ADD"
 #define SEARCH			  "SEARCH"
 #define EXIT			    "EXIT"
 #define REGISTER		  "Register your contact information."
 #define INDEX			    "Please enter the index of contacts \
-you would like to display."
+you would like to display. (1 ~ 8)"
 #define ERROR         "Error cin failed."
+#define INDEX_ERR		  "Please enter an index from one to eight."
+#define NO_CONTACTS   "No contacts registered."
 #define FIRST_NAME		"Please enter your first name."
 #define LAST_NAME		  "Please enter your last name."
 #define NICKNAME		  "Please enter your nickname."

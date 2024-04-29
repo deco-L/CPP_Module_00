@@ -6,7 +6,7 @@
 #    By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/01 14:21:20 by csakamot          #+#    #+#              #
-#    Updated: 2024/02/15 17:17:44 by csakamot         ###   ########.fr        #
+#    Updated: 2024/04/29 16:16:21 by csakamot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,12 +14,22 @@
 NAME			= megaphone
 ##-----------------------------##
 
+##-----Directory Location------##
+SRCDIR			= ./
+
+INCDIR			= ./
+
+OBJDIR			= objs/
+##-----------------------------##
+
 ##------------Srcs-------------##
 MAINSRC			= megaphone.cpp
+
+SRCS			= $(addprefix $(SRCDIR), ${MAINSRC})
 ##-----------------------------##
 
 ##-----------Object------------##
-OBJS			= ${MAINSRC:.cpp=.o}
+OBJS			= ${subst ${SRCDIR}, $(OBJDIR), ${SRCS:.cpp=.o}}
 ##-----------------------------##
 
 ##----------conpiler-----------##
@@ -34,19 +44,20 @@ ARFLAG			= rcs
 ##--------Makefile rule--------##
 all:			${NAME}
 
-%.o:%.c
-				${CC} ${CFLAGS} -c $< -o $@
-
-${NAME}:        ${OBJS}
+${NAME}:${OBJS}
 				@echo "object file				compiled"
-				@${CC} ${CFLAGS} ${OBJS} -o ${NAME}
+				@$(CC) $(CFLAGS) $^ -o $@
+
+$(OBJDIR)%.o:$(SRCDIR)%.cpp
+				@mkdir -p $(OBJDIR)
+				@$(CC) $(CFLAGS) -I $(INCDIR)  -c $< -o $@
 
 clean:
-				@${RM} ${OBJS}
+				@${RM} -rf ${OBJDIR}
 				@echo "object file				removed"
 
 fclean:			clean
-				@${RM} ${NAME}
+				@${RM} -rf ${NAME}
 
 re:				fclean all
 
@@ -54,4 +65,4 @@ exe:			re
 				@make -s clean
 
 .PHONY:			all clean fclean re exe
-##-----------------------------##%
+##-----------------------------##

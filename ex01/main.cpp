@@ -6,32 +6,39 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 14:21:20 by csakamot          #+#    #+#             */
-/*   Updated: 2024/04/29 15:47:04 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/04/29 17:57:30 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
+#include "Print.hpp"
 
 static bool	print_phonebook(PhoneBook *phonebook) {
 	int		index;
-	Contact	tmp;
 
+  index = 0;
 	Print::draw_terminal_line();
-	std::cout << INDEX << std::endl;
-	std::cin >> index;
-	if (std::cin.fail() || index < 1 || index > 8) {
-		std::cin.clear();
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		std::cout << ERROR << std::endl;
-		Print::draw_terminal_line();
-		return (false);
-	}
 	std::cout << DISPLAY << std::endl;
-	tmp = phonebook->getContact(index - 1);
-	Print::print_row(phonebook->getindex(index), false);
-	Print::print_row(tmp.info.first_name, false);
-	Print::print_row(tmp.info.last_name, false);
-	Print::print_row(tmp.info.nickname, true);
+  Print::print_list(index, *phonebook);
+  do {
+    std::cout << INDEX << std::endl;
+    std::cin >> index;
+    if (std::cin.fail()) {
+      if (std::cin.eof())
+      {
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cout << ERROR << std::endl;
+        Print::draw_terminal_line();
+        return (false);
+      }
+      std::cin.clear();
+      std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    }
+  }
+  while (index <= 0 || index > 8);
+  if (!Print::print_contact(index, *phonebook))
+    std::cout << NO_CONTACTS << std::endl;
 	Print::draw_terminal_line();
 	return (true);
 }
@@ -41,6 +48,7 @@ int	main(void) {
 	Contact		contact;
 	std::string	readcommand;
 
+  std::cout << MANUAL << std::endl;
 	while (true) {
 		std::cin >> readcommand;
 		if (readcommand == ADD) {

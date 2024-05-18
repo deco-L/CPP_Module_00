@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 14:21:20 by csakamot          #+#    #+#             */
-/*   Updated: 2024/04/29 17:34:18 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/05/18 18:06:15 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ you would like to display. (1 ~ 8)"
 #define REGISTER_END	"The contact have been registered."
 #define DISPLAY		    "Displays registered contacts."
 
-struct ContactInfo{
+struct ContactInfo
+{
 	std::string	first_name;
 	std::string	last_name;
 	std::string	nickname;

@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 14:21:20 by csakamot          #+#    #+#             */
-/*   Updated: 2024/04/29 16:36:36 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/05/18 18:06:04 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@
 #include <limits>
 #include <sstream>
 
-class	PhoneBook : Contact {
+class	PhoneBook : Contact
+{
 private:
 	int				count;
 	Contact			emptycontact;

@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 14:21:20 by csakamot          #+#    #+#             */
-/*   Updated: 2024/04/29 13:50:37 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/05/18 14:58:59 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 #include "structure.hpp"
 #include <limits>
 
-class	Contact {
+class	Contact
+{
 public:
 	ContactInfo info;
 
